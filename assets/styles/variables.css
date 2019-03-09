@@ -1,0 +1,36 @@
+:root {
+    --font-family: 'Arial', sans-serif;
+
+    --font-size-xl: 18px;
+    --font-size-lg: 16px;
+    --font-size-md: 14px;
+    --font-size-xs: 12px;
+    --font-size-base: var(--font-size-md);
+
+    --line-height-xl: 2;
+    --line-height-lg: 1.5;
+    --line-height-md: 1.25;
+    --line-height-xs: 1.15;
+    --line-height-base: var(--line-height-md);
+
+    --font-size-h1: 36px;
+    --font-size-h2: 24px;
+    --font-size-h3: 18px;
+    --font-size-h4: 14px;
+    --font-size-h5: 14px;
+    --font-size-h6: 14px;
+
+    --font-size-h1-md: 24px;
+    --font-size-h2-md: 18px;
+    --font-size-h3-md: 14px;
+    --font-size-h4-md: 14px;
+    --font-size-h5-md: 14px;
+    --font-size-h6-md: 14px;
+
+    --color-black: #000000;
+    --color-white: #ffffff;
+
+    --border-radius: 4px;
+    --box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.05),
+        0 0 20px 0 rgba(0, 0, 0, 0.025);
+}

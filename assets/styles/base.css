@@ -1,0 +1,36 @@
+* {
+    box-sizing: inherit;
+}
+
+html {
+    position: relative;
+    box-sizing: border-box;
+    min-height: 100%;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    font-family: var(--font-family);
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    position: relative;
+    display: block;
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+button {
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    cursor: pointer;
+}
