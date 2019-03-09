@@ -14,6 +14,7 @@
     },
     "dependencies": {
         "@nuxtjs/svg-sprite": "^0.2.0",
+        "express": "^4.16.4",
         "nuxt": "^2.0.0"
     },
     "devDependencies": {

@@ -1,10 +1,10 @@
 # social network.
 
-> vue.js + nuxt.js + postcss + node.js + mongoDB
+> vue.js, nuxt.js, postcss, node.js, mongoDB
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ npm install # Or yarn install
 
@@ -18,5 +18,3 @@ $ npm start
 # generate static project
 $ npm run generate
 ```
-
-

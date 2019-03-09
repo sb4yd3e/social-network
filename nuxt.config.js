@@ -6,13 +6,24 @@ module.exports = {
         title: 'social network.',
         meta: [
             { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { hid: 'description', name: 'description', content: '"vue.js + nuxt.js + postcss + node.js + mongoDB"' },
-            { hid: 'og:title', property: 'og:title', content: 'social network.' },
+            {
+                name: 'viewport',
+                content: 'width=device-width, initial-scale=1'
+            },
+            {
+                hid: 'description',
+                name: 'description',
+                content: 'vue.js + nuxt.js + postcss + node.js + mongoDB'
+            },
+            {
+                hid: 'og:title',
+                property: 'og:title',
+                content: 'social network.'
+            },
             {
                 hid: 'og:description',
                 property: 'og:description',
-                content: '"vue.js + nuxt.js + postcss + node.js + mongoDB"'
+                content: 'vue.js + nuxt.js + postcss + node.js + mongoDB'
             }
         ],
         link: [
@@ -30,7 +41,7 @@ module.exports = {
                     test: /\.(js|vue)$/,
                     loader: 'eslint-loader',
                     exclude: /(node_modules)/
-                })
+                });
             }
         },
         vendor: ['axios'],
@@ -44,10 +55,9 @@ module.exports = {
             require('cssnano')()
         ]
     },
-    modules: [
-        '@nuxtjs/svg-sprite'
-    ],
-    plugins: [
-        { src: '@/assets/scripts/app.js', ssr: false }
+    modules: ['@nuxtjs/svg-sprite'],
+    plugins: [{ src: '~/assets/scripts/app.js', ssr: false }],
+    serverMiddleware: [
+        '~/api/index.js'
     ]
-}
+};
