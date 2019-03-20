@@ -1,4 +1,6 @@
-.container {
+.Container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding-right: 30px;
     padding-left: 30px;
 

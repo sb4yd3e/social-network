@@ -1,19 +1,16 @@
 <template>
-    <div></div>
+    <div>123</div>
 </template>
 
 <script>
-import axios from '~/plugins/axios';
-
 export default {
-    async asyncData() {
-        let { data } = await axios.get('/api/home');
-        return { home: data };
-    },
     head() {
         return {
             title: 'Home'
         };
+    },
+    mounted() {
+        // this.$store.dispatch('fetchStatus');
     }
 };
 </script>

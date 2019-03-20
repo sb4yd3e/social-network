@@ -34,3 +34,13 @@ button {
     font-family: inherit;
     cursor: pointer;
 }
+
+a {
+    color: var(--color-blue);
+    text-decoration: none;
+    transition: color 0.25s ease-in-out;
+
+    &:hover {
+        color: var(--color-bluelight);
+    }
+}

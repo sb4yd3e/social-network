@@ -1,9 +1,9 @@
 body {
-    font-weight: 400;
+    font-weight: --font-weight-regular;
     font-size: --font-size-base;
     line-height: --line-height-base;
-    font-family: --font-family;
-    color: var(--black);
+    font-family: var(--font-family);
+    color: var(--color-black);
 
     @media (--md-down) {
         margin: 0 0 15px;
@@ -13,7 +13,7 @@ body {
 h1,h2,h3,h4,h5,h6,
 .h1,.h2,.h3,.h4,.h5,.h6 {
     margin: 0 0 20px;
-    font-weight: 400;
+    font-weight: --font-weight-bold;
     line-height: --line-height-base;
 
     @media (--md-down) {

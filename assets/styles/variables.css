@@ -3,8 +3,8 @@
 
     --font-size-xl: 18px;
     --font-size-lg: 16px;
-    --font-size-md: 14px;
-    --font-size-xs: 12px;
+    --font-size-md: 15px;
+    --font-size-xs: 13px;
     --font-size-base: var(--font-size-md);
 
     --line-height-xl: 2;
@@ -16,19 +16,25 @@
     --font-size-h1: 36px;
     --font-size-h2: 24px;
     --font-size-h3: 18px;
-    --font-size-h4: 14px;
-    --font-size-h5: 14px;
-    --font-size-h6: 14px;
+    --font-size-h4: 15px;
+    --font-size-h5: 15px;
+    --font-size-h6: 15px;
 
     --font-size-h1-md: 24px;
     --font-size-h2-md: 18px;
-    --font-size-h3-md: 14px;
-    --font-size-h4-md: 14px;
-    --font-size-h5-md: 14px;
-    --font-size-h6-md: 14px;
+    --font-size-h3-md: 15px;
+    --font-size-h4-md: 15px;
+    --font-size-h5-md: 15px;
+    --font-size-h6-md: 15px;
+
+    --font-weight-bold: 700;
+    --font-weight-regular: 400;
 
     --color-black: #000000;
-    --color-white: #ffffff;
+    --color-gray: #E6ECF0;
+    --color-blue: #4A76A8;
+    --color-bluelight: #3F6996;
+    --color-white: #FFFFFF;
 
     --border-radius: 4px;
     --box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.05),
