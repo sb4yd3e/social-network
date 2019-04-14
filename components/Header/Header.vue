@@ -1,16 +1,13 @@
 <template>
     <header class="Header">
-        <div class="Header-Inner">
-            <div class="Header-Container Container">
-                <div class="Header-Logo">
-                    <nuxt-link class="Header-LogoLink" to="/">social network.</nuxt-link>
-                </div>
-                <div class="Header-UserBlock">
-                    <div class="Header-SingIn">
-
+        <div class="Header-Wrapper">
+            <div class="Container">
+                <div class="Header-Inner">
+                    <div class="Header-Logo">
+                        <nuxt-link class="Header-LogoLink Link" to="/">{{logo}}</nuxt-link>
                     </div>
-                    <div class="Header-User">
-                        
+                    <div class="Header-Logout">
+                        <button class="Link">Выйти</button>
                     </div>
                 </div>
             </div>
@@ -22,13 +19,8 @@
 export default {
     data() {
         return {
-            dropdownVisibility: false,
+            logo: 'СОЦИАЛЬНАЯ СЕТЬ'
         };
     }
 };
 </script>
-
-<style>
-@import './Header.css';
-</style>
-

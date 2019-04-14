@@ -32,8 +32,9 @@
 
     --color-black: #000000;
     --color-gray: #E6ECF0;
-    --color-blue: #4A76A8;
-    --color-bluelight: #3F6996;
+    --color-graydark: #7a7a7a;
+    --color-blue: #2478a9;
+    --color-bluelight: #2b95d0;
     --color-white: #FFFFFF;
 
     --border-radius: 4px;

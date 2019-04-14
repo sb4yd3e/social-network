@@ -1,0 +1,27 @@
+.Layout {
+    background: var(--color-gray);
+
+    &-Header {
+        padding: 0 0 20px;
+    }
+
+    &-Body {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 0 20px;
+    }
+
+    &-Aside {
+        width: 250px;
+    }
+
+    &-Content {
+        width: calc(100% - 270px);
+    }
+
+    &-Main {
+        .Piece {
+            margin: 0 0 20px;
+        }
+    }
+}

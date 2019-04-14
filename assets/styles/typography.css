@@ -1,24 +1,17 @@
 body {
-    font-weight: --font-weight-regular;
-    font-size: --font-size-base;
-    line-height: --line-height-base;
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
     font-family: var(--font-family);
     color: var(--color-black);
-
-    @media (--md-down) {
-        margin: 0 0 15px;
-    }
+    background: var(--color-gray);
 }
 
 h1,h2,h3,h4,h5,h6,
 .h1,.h2,.h3,.h4,.h5,.h6 {
     margin: 0 0 20px;
-    font-weight: --font-weight-bold;
-    line-height: --line-height-base;
-
-    @media (--md-down) {
-        margin: 0 0 15px;
-    }
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-base);
 }
 
 h1,
@@ -57,7 +50,8 @@ h4,
     }
 }
 
-h5 {
+h5,
+.h5 {
     font-size: var(--font-size-h5);
 
     @media (--md-down) {
@@ -65,7 +59,8 @@ h5 {
     }
 }
 
-h6 {
+h6,
+.h6 {
     font-size: var(--font-size-h6);
 
     @media (--md-down) {

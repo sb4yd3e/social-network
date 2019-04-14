@@ -1,11 +1,11 @@
 import Vuex from 'vuex';
 import layout from './layout';
-import home from './home';
+import myPage from './my-page';
 
 export default () => new Vuex.Store({
     namespaced: true,
     modules: {
         layout,
-        home,
+        myPage,
     }
 });

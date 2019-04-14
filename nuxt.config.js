@@ -49,7 +49,9 @@ module.exports = {
             require('postcss-import')(),
             require('postcss-nested')(),
             require('postcss-custom-media')(),
-            require('postcss-custom-properties')({ preserve: false }),
+            require('postcss-custom-properties')({
+                preserve: false
+            }),
             require('css-mqpacker')(),
             require('autoprefixer')(),
             require('cssnano')()

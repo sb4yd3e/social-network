@@ -1,0 +1,17 @@
+.Post {
+    &-Header {
+        margin: 0 0 10px;
+    }
+
+    &-Name {
+        margin: 0;
+    }
+
+    &-Time {
+        color: var(--color-graydark);
+    }
+
+    &-Text {
+        margin: 0;
+    }
+}

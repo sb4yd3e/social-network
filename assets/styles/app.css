@@ -4,3 +4,12 @@
 @import './base.css';
 @import './typography.css';
 @import './custom.css';
+
+@import '../../components/Link/Link.css';
+@import '../../components/Piece/Piece.css';
+@import '../../components/Layout/Layout.css';
+@import '../../components/Header/Header.css';
+@import '../../components/EmptyBlock/EmptyBlock.css';
+@import '../../components/Aside/Aside.css';
+@import '../../components/AddPost/AddPost.css';
+@import '../../components/Post/Post.css';

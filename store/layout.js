@@ -2,17 +2,17 @@ import axios from '~/plugins/axios';
 
 export default {
     state: {
-        status: null,
+        inited: false
     },
     mutations: {
         FETCH_LAYOUT(state, data) {
-            state.status = data.status;
+            state.inited = data.inited;
         }
     },
     actions: {
         fetchLayout({ commit }) {
             axios.get('/api/layout').then((response) => {
-                return commit('FETCH_LAYOUT', response.data);
+                return commit('FETCH_LAYOUT', response.data.data);
             });
         }
     }

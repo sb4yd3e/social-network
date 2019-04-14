@@ -1,0 +1,6 @@
+.EmptyBlock {
+    &-Text {
+        margin: 0;
+        color: var(--color-graydark);
+    }
+}

@@ -1,0 +1,21 @@
+.Aside {
+    position: sticky;
+    top: 80px;
+    left: 0;
+    display: block;
+
+    &-Item {
+        margin: 0 0 10px;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    &-Photo {
+        display: block;
+        width: 100%;
+        margin: 0 0 20px;
+        border-radius: var(--border-radius);
+    }
+}
