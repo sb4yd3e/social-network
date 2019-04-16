@@ -1,6 +1,6 @@
 module.exports = {
     server: {
-        port: process.env.OPENSHIFT_NODEJS_PORT || 3000,
+        port: process.env.OPENSHIFT_NODEJS_PORT || 8080,
         host: process.env.OPENSHIFT_NODEJS_IP || 'localhost'
     },
     head: {
