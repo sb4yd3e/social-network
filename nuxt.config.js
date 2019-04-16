@@ -1,9 +1,13 @@
 module.exports = {
+    server: {
+        port: process.env.OPENSHIFT_NODEJS_PORT || 3000,
+        host: process.env.OPENSHIFT_NODEJS_IP || 'localhost'
+    },
     head: {
         htmlAttrs: {
             lang: 'ru'
         },
-        title: 'social network.',
+        title: 'СОЦИАЛЬНАЯ СЕТЬ',
         meta: [
             { charset: 'utf-8' },
             {
@@ -18,7 +22,7 @@ module.exports = {
             {
                 hid: 'og:title',
                 property: 'og:title',
-                content: 'social network.'
+                content: 'СОЦИАЛЬНАЯ СЕТЬ'
             },
             {
                 hid: 'og:description',

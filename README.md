@@ -1,4 +1,4 @@
-# social network.
+# СОЦИАЛЬНАЯ СЕТЬ
 
 > vue.js, nuxt.js, postcss, node.js, mongoDB
 
