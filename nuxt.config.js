@@ -1,8 +1,4 @@
 module.exports = {
-    server: {
-        port: process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080,
-        host: process.env.OPENSHIFT_NODEJS_IP || process.env.IP || '0.0.0.0'
-    },
     head: {
         htmlAttrs: {
             lang: 'ru'
@@ -61,7 +57,7 @@ module.exports = {
             require('cssnano')()
         ]
     },
-    modules: ['@nuxtjs/svg-sprite'],
+    // modules: ['@nuxtjs/svg-sprite'],
     plugins: [{ src: '~/assets/scripts/app.js', ssr: false }],
     serverMiddleware: [
         '~/api/index.js'
