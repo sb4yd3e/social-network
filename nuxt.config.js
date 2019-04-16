@@ -1,7 +1,7 @@
 module.exports = {
     server: {
         port: process.env.OPENSHIFT_NODEJS_PORT || 8080,
-        host: process.env.OPENSHIFT_NODEJS_IP || '172.30.21.253'
+        host: process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
     },
     head: {
         htmlAttrs: {
