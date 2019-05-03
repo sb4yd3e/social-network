@@ -1,4 +1,18 @@
 .Post {
+    display: flex;
+    justify-content: space-between;
+
+    &-PhotoWrapper {
+        width: 50px;
+        max-width: 50px;
+        height: auto;
+    }
+
+    &-Info {
+        width: calc(100% - 70px);
+        max-width: calc(100% - 70px);
+    }
+
     &-Header {
         margin: 0 0 10px;
     }
@@ -7,7 +21,8 @@
         margin: 0;
     }
 
-    &-Time {
+    &-Date {
+        font-size: var(--font-size-xs);
         color: var(--color-graydark);
     }
 

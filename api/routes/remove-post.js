@@ -3,21 +3,14 @@ const router = Router();
 
 const Post = require('../models/post');
 
-router.post('/add-post', (req, res) => {
-    const post = new Post({
-        userId: req.body.userId,
-        creator: req.body._id,
-        date: new Date(),
-        text: req.body.string
-    });
-
-    post
-        .save((saveError, saveResult) => {
-            if (saveError) {
+router.post('/remove-post', (req, res) => {
+    Post
+        .findOneAndRemove({ _id: req.body.id }).exec((findError, findResult) => {
+            if (findError) {
                 res.json({
                     status: false,
                     data: {
-                        error: saveError
+                        error: findError
                     }
                 });
             } else {

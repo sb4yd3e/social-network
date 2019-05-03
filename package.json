@@ -15,17 +15,21 @@
     },
     "dependencies": {
         "@nuxtjs/svg-sprite": "^0.2.0",
+        "axios": "^0.18.0",
         "express": "^4.16.4",
+        "focus-visible": "^4.1.5",
+        "fs": "0.0.1-security",
+        "googleapis": "^39.2.0",
         "mongodb": "^3.1.13",
-        "nuxt": "^2.0.0"
+        "mongoose": "^5.5.5",
+        "nuxt": "^2.0.0",
+        "request": "^2.88.0"
     },
     "devDependencies": {
-        "axios": "^0.18.0",
         "autoprefixer": "^9.4.10",
         "babel-eslint": "^10.0.1",
         "css-mqpacker": "^7.0.0",
         "cssnano": "^4.1.10",
-        "focus-visible": "^4.1.5",
         "eslint": "^4.19.1",
         "eslint-friendly-formatter": "^4.0.1",
         "eslint-loader": "^2.1.1",

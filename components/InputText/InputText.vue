@@ -10,6 +10,7 @@
                     :type="type"
                     :name="name"
                     :placeholder="placeholder"
+                    :autocomplete="autocomplete ? 'on' : 'off'"
                     v-model="model"
                 >
             </div>
@@ -25,6 +26,7 @@ export default {
         name: String,
         value: String,
         placeholder: String,
+        autocomplete: Boolean,
         change: Function
     },
     computed: {

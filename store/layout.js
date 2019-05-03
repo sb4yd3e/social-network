@@ -6,12 +6,13 @@ export default {
     },
     mutations: {
         FETCH_LAYOUT(state, data) {
-            state.inited = data.inited;
+            state.user = data.user;
+            state.inited = true;
         }
     },
     actions: {
-        fetchLayout({ commit }) {
-            axios.get('/api/layout').then((response) => {
+        fetchLayout({ commit }, data) {
+            axios.post('/api/layout', data).then((response) => {
                 return commit('FETCH_LAYOUT', response.data.data);
             });
         }

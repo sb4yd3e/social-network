@@ -5,8 +5,11 @@
                 <img class="Aside-Photo" :src="photo" alt="Фото профиля">
             </div>
             <ul class="Aside-List">
-                <li class="Aside-Item" v-for="(item, index) in nav.list" :key="index">
+                <li class="Aside-Item" v-for="(item, index) in nav" :key="index">
                     <nuxt-link class="Link" :to="item.url">{{item.name}}</nuxt-link>
+                </li>
+                <li>
+                    <Link :text="'Выход'" :click="signOut" />
                 </li>
             </ul>
         </nav>
@@ -14,31 +17,16 @@
 </template>
 
 <script>
+import Link from '../Link/Link.vue';
+
 export default {
-    data() {
-        return {
-            photo: '/images/photo-placeholder.jpg',
-            nav: {
-                list: [
-                    {
-                        name: 'Моя страница',
-                        url: '/'
-                    },
-                    {
-                        name: 'Новости',
-                        url: '/feed'
-                    },
-                    {
-                        name: 'Друзья',
-                        url: '/friends'
-                    },
-                    {
-                        name: 'Профиль',
-                        url: '/profile'
-                    }
-                ]
-            }
-        };
+    components: {
+        Link
+    },
+    props: {
+        photo: String,
+        nav: Array,
+        signOut: Function
     }
 };
 </script>

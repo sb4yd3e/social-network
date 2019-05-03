@@ -1,0 +1,60 @@
+.Button {
+    position: relative;
+    display: inline-block;
+    height: 40px;
+    margin: 0;
+    padding: 0 20px;
+    overflow: hidden;
+    font-weight: var(--font-weight-bold);
+    font-size: inherit;
+    line-height: 40px;
+    font-family: inherit;
+    vertical-align: baseline;
+    text-align: center;
+    color: var(--color-white); 
+    text-decoration: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background: var(--color-blue);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background 0.25s ease-in-out;
+    -webkit-appearance: none;
+
+    @keyframes BLINKER {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    &:hover {
+        background:  var(--color-bluelight);
+    }
+    
+    &.is-loading {
+        pointer-events: none;
+    }
+
+    &-Text {
+        display: block;
+
+        .Button.is-loading & {
+            display: none;
+        }
+    }
+
+    &-Preloader {
+        display: none;
+
+        .Button.is-loading & {
+            display: block;
+        }
+    }
+
+    &-PreloaderDots {
+        .Button.is-loading & {
+            animation: BLINKER 1s linear infinite;
+        }
+    }
+}

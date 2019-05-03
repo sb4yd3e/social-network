@@ -1,14 +1,21 @@
 .Layout {
     background: var(--color-gray);
 
-    &-Header {
-        padding: 0 0 20px;
-    }
-
     &-Body {
         display: flex;
         justify-content: space-between;
-        padding: 0 0 20px;
+        padding: 20px 0;
+    }
+
+    &-Auth {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
     }
 
     &-Aside {

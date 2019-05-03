@@ -1,12 +1,13 @@
 <template>
     <div class="Layout" v-if="this.$store.state.layout.inited">
-        <div class="Layout-Header">
-            <Header/>
-        </div>
         <div class="Container">
-            <div class="Layout-Body">
+            <div v-if="this.$store.state.layout.user.status" class="Layout-Body">
                 <div class="Layout-Aside">
-                    <Aside/>
+                    <Aside
+                        :signOut="signOut"
+                        :photo="this.$store.state.layout.user.photo"
+                        :nav="nav"
+                    />
                 </div>
                 <div class="Layout-Content">
                     <main class="Layout-Main">
@@ -14,22 +15,75 @@
                     </main>
                 </div>
             </div>
+            <div v-else class="Layout-Auth">
+                <Button text="Войти" :click="signIn"/>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-import Header from '../components/Header/Header.vue';
 import Aside from '../components/Aside/Aside.vue';
+import Button from '../components/Button/Button.vue';
 
 export default {
     components: {
-        Header,
-        Aside
+        Aside,
+        Button
+    },
+    data() {
+        return {
+            nav: [
+                {
+                    name: 'Моя страница',
+                    url: '/'
+                },
+                {
+                    name: 'Пользователи',
+                    url: '/users'
+                },
+                {
+                    name: 'Новости',
+                    url: '/feed'
+                },
+                {
+                    name: 'Профиль',
+                    url: '/profile'
+                }
+            ]
+        };
+    },
+    methods: {
+        signIn() {
+            gapi.auth2
+                .getAuthInstance()
+                .signIn()
+                .then(data => {
+                    window.location.reload();
+                });
+        },
+        signOut() {
+            gapi.auth2
+                .getAuthInstance()
+                .disconnect()
+                .then(() => {
+                    window.location.reload();
+                });
+        }
     },
     mounted() {
-        this.$store.dispatch('fetchLayout');
+        gapi.load('auth2', () => {
+            gapi.auth2
+                .init({
+                    client_id:
+                        '702949505387-ik3m53aakhun7cppl5h72g9us21eg8me.apps.googleusercontent.com'
+                })
+                .then(() => {
+                    this.$store.dispatch('fetchLayout', {
+                        user: gapi.auth2.getAuthInstance().currentUser.get().w3
+                    });
+                });
+        });
     }
 };
 </script>
-

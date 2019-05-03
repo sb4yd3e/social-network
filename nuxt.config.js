@@ -3,7 +3,7 @@ module.exports = {
         htmlAttrs: {
             lang: 'ru'
         },
-        title: 'СОЦИАЛЬНАЯ СЕТЬ',
+        title: 'Моя страница',
         meta: [
             { charset: 'utf-8' },
             {
@@ -18,7 +18,7 @@ module.exports = {
             {
                 hid: 'og:title',
                 property: 'og:title',
-                content: 'СОЦИАЛЬНАЯ СЕТЬ'
+                content: 'Моя страница'
             },
             {
                 hid: 'og:description',
@@ -29,6 +29,11 @@ module.exports = {
         link: [
             { rel: 'shortcut icon', href: '/images/favicon.png' },
             { rel: 'icon', href: '/images/favicon.png' }
+        ],
+        script: [
+            {
+                src: 'https://apis.google.com/js/platform.js?onload=googleInit'
+            }
         ]
     },
     loading: { color: '#000000' },
@@ -58,7 +63,9 @@ module.exports = {
         ]
     },
     // modules: ['@nuxtjs/svg-sprite'],
-    plugins: [{ src: '~/assets/scripts/app.js', ssr: false }],
+    plugins: [
+        { src: '~/assets/scripts/app.js', ssr: false }
+    ],
     serverMiddleware: [
         '~/api/index.js'
     ]

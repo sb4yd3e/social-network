@@ -1,30 +1,27 @@
 <template>
     <div class="AddPost Piece">
         <div class="AddPost-Field">
-            <InputText
-                :type="'text'"
-                :name="'add_post'"
-                :placeholder="'Введите текст сообщения'"
-                :value="this.$store.state.myPage.addPostInputValue"
-                :change="(value) => { this.$store.commit('CHANGE_ADD_POST_INPUT_VALUE', value) }"
-            />
+            <InputText :type="'text'" :name="'add_post'" :value="value" :change="change" :autocomplete="false" />
         </div>
         <div class="AddPost-Button">
-            <button
-                class="Button"
-                type="button"
-                @click="() => { this.$store.dispatch('addPost') }"
-            >Отправить</button>
+            <Button :text="'Опубликовать'" :click="submit"/>
         </div>
     </div>
 </template>
 
 <script>
 import InputText from '../InputText/InputText.vue';
+import Button from '../Button/Button.vue';
 
 export default {
+    props: {
+        value: String,
+        change: Function,
+        submit: Function
+    },
     components: {
-        InputText
+        InputText,
+        Button
     }
 };
 </script>
