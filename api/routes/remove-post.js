@@ -15,7 +15,7 @@ router.post('/remove-post', (req, res) => {
                 });
             } else {
                 Post
-                    .find({ userId: req.body.userId })
+                    .find(req.body.userId ? { userId: req.body.userId } : {})
                     .populate('creator')
                     .sort([['date', -1]])
                     .exec((findError, findResult) => {

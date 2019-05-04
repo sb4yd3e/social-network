@@ -15,21 +15,21 @@
     text-decoration: none;
     white-space: nowrap;
     text-overflow: ellipsis;
-    background: var(--color-blue);
+    background: var(--color-black);
     border: none;
     border-radius: var(--border-radius);
     cursor: pointer;
     transition: background 0.25s ease-in-out;
     -webkit-appearance: none;
 
+    &:hover {
+        background: var(--color-blacklight);
+    }
+
     @keyframes BLINKER {
         0% { opacity: 1; }
         50% { opacity: 0; }
         100% { opacity: 1; }
-    }
-
-    &:hover {
-        background:  var(--color-bluelight);
     }
     
     &.is-loading {

@@ -2,8 +2,8 @@
     <div class="Layout" v-if="this.$store.state.layout.inited">
         <div class="Container">
             <div v-if="this.$store.state.layout.user.status" class="Layout-Body">
-                <div class="Layout-Aside">
-                    <Aside
+                <div class="Layout-Nav">
+                    <Nav
                         :signOut="signOut"
                         :photo="this.$store.state.layout.user.photo"
                         :nav="nav"
@@ -23,12 +23,12 @@
 </template>
 
 <script>
-import Aside from '../components/Aside/Aside.vue';
+import Nav from '../components/Nav/Nav.vue';
 import Button from '../components/Button/Button.vue';
 
 export default {
     components: {
-        Aside,
+        Nav,
         Button
     },
     data() {
@@ -39,16 +39,12 @@ export default {
                     url: '/'
                 },
                 {
-                    name: 'Пользователи',
-                    url: '/users'
-                },
-                {
                     name: 'Новости',
                     url: '/feed'
                 },
                 {
-                    name: 'Профиль',
-                    url: '/profile'
+                    name: 'Пользователи',
+                    url: '/users'
                 }
             ]
         };

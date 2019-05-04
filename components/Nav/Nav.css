@@ -1,0 +1,13 @@
+.Nav {
+    &-List {
+        display: flex;
+    }
+
+    &-Item {
+        margin: 0 30px 0 0;
+
+        &:last-child {
+            margin: 0 0 0 auto;
+        }
+    }
+}

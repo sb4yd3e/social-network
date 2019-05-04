@@ -1,4 +1,5 @@
 module.exports = {
+    mode: 'spa',
     head: {
         htmlAttrs: {
             lang: 'ru'

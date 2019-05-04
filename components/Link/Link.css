@@ -2,13 +2,13 @@
     display: inline-block;
     margin: 0;
     padding: 0;
-    color: var(--color-blue);
+    color: var(--color-graydark);
     text-decoration: none;
     background: none;
     border: none;
     transition: color 0.25s ease-in-out;
 
     &:hover {
-        color: var(--color-bluelight);
+        color: var(--color-black);
     }
 }

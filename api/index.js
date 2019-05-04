@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 const layout = require('./routes/layout');
 const myPage = require('./routes/my-page');
+const feed = require('./routes/feed');
 const addPost = require('./routes/add-post');
 const removePost = require('./routes/remove-post');
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 
 app.use(layout);
 app.use(myPage);
+app.use(feed);
 app.use(addPost);
 app.use(removePost);
 

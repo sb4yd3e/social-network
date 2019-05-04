@@ -1,7 +1,7 @@
 <template>
     <div class="AddPost Piece">
         <div class="AddPost-Field">
-            <InputText :type="'text'" :name="'add_post'" :value="value" :change="change" :autocomplete="false" />
+            <InputText :type="'text'" :name="'add_post'" :value="value" :change="change" :autocomplete="false" :placeholder="'Добавить сообщение'" />
         </div>
         <div class="AddPost-Button">
             <Button :text="'Опубликовать'" :click="submit"/>
