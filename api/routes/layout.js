@@ -57,7 +57,7 @@ router.post('/layout', (req, res) => {
                                 res.json({
                                     status: true,
                                     data: {
-                                        user: { status: true, ...saveResult }
+                                        user: { status: true, ...saveResult._doc }
                                     }
                                 });
                             }
