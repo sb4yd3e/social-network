@@ -17,12 +17,6 @@
     }
 
     &-Nav {
-        margin: 0 0 20px;
-    }
-
-    &-Main {
-        .Piece {
-            margin: 0 0 20px;
-        }
+        margin: 0 0 10px;
     }
 }

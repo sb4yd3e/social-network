@@ -10,9 +10,6 @@ export default {
             state.posts = payload.posts;
             state.inited = true;
         },
-        UPDATE_FEED_POSTS(state, payload) {
-            state.posts = payload.posts;
-        },
         CLEAR_FEED(state) {
             state.inited = false;
             state.posts = [];
@@ -20,13 +17,13 @@ export default {
     },
     actions: {
         fetchFeed({ commit }, data) {
-            axios.post('/api/feed', data).then((response) => {
+            axios.post('/api/posts').then((response) => {
                 return commit('FETCH_FEED', response.data.data);
             });
         },
-        removeFeedPost({ commit }, data) {
+        removeFeedPost({ dispatch }, data) {
             axios.post('/api/remove-post', data).then((response) => {
-                return commit('UPDATE_FEED_POSTS', response.data.data);
+                return dispatch('fetchFeed');
             });
         },
         clearFeed({ commit }) {

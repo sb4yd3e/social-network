@@ -14,27 +14,10 @@ router.post('/remove-post', (req, res) => {
                     }
                 });
             } else {
-                Post
-                    .find(req.body.userId ? { userId: req.body.userId } : {})
-                    .populate('creator')
-                    .sort([['date', -1]])
-                    .exec((findError, findResult) => {
-                        if (findError) {
-                            res.json({
-                                status: false,
-                                data: {
-                                    error: findError
-                                }
-                            });
-                        } else {
-                            res.json({
-                                status: true,
-                                data: {
-                                    posts: findResult
-                                }
-                            });
-                        };
-                    });
+                res.json({
+                    status: true,
+                    data: {}
+                });
             }
         });
 });

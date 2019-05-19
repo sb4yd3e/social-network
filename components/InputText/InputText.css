@@ -13,10 +13,6 @@
         padding: 0 0 5px;
     }
 
-    &__label {
-
-    }
-
     &__inner {
         position: relative;
     }
@@ -35,12 +31,7 @@
         -webkit-appearance: none;
 
         &:focus {
-            border-color: var(--color-graymiddle);
             outline: none;
-        }
-
-        &:hover {
-            border-color: var(--color-graymiddle) !important;
         }
 
         &::-ms-clear,

@@ -14,10 +14,6 @@ export default {
         CHANGE_ADD_POST_INPUT_VALUE(state, payload) {
             state.addPostInputValue = payload;
         },
-        UPDATE_MY_PAGE_POSTS(state, payload) {
-            state.posts = payload.posts;
-            state.addPostInputValue = '';
-        },
         CLEAR_MY_PAGE(state) {
             state.inited = false;
             state.posts = [];
@@ -25,18 +21,22 @@ export default {
     },
     actions: {
         fetchMyPage({ commit }, data) {
-            axios.post('/api/my-page', data).then((response) => {
+            axios.post('/api/posts', data).then((response) => {
                 return commit('FETCH_MY_PAGE', response.data.data);
             });
         },
-        addMyPagePost({ commit }, data) {
+        addMyPagePost({ dispatch, rootState }, data) {
             axios.post('/api/add-post', data).then((response) => {
-                return commit('UPDATE_MY_PAGE_POSTS', response.data.data);
+                return dispatch('fetchMyPage', {
+                    userId: rootState.layout.user.userId
+                });
             });
         },
-        removeMyPagePost({ commit }, data) {
+        removeMyPagePost({ dispatch, state }, data) {
             axios.post('/api/remove-post', data).then((response) => {
-                return commit('UPDATE_MY_PAGE_POSTS', response.data.data);
+                return dispatch('fetchMyPage', {
+                    userId: rootState.layout.user.userId
+                });
             });
         },
         clearMyPage({ commit }) {

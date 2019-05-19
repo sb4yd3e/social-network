@@ -26,9 +26,7 @@ export default {
         };
     },
     mounted() {
-        this.$store.dispatch('fetchFeed', {
-            userId: this.$store.state.layout.user.userId
-        });
+        this.$store.dispatch('fetchFeed');
     },
     destroyed() {
         this.$store.dispatch('clearFeed');

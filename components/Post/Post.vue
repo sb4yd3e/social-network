@@ -1,5 +1,5 @@
 <template>
-    <article class="Post Piece">
+    <article class="Post">
         <header class="Post-Header">
             <div class="Post-PhotoWrapper">
                 <img class="Post-Photo" :src="creator.photo" alt="Фото автора поста">

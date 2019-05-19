@@ -3,9 +3,10 @@ const router = Router();
 
 const Post = require('../models/post');
 
-router.post('/my-page', (req, res) => {
+router.post('/posts', (req, res) => {
+    const { userId } = req.body;
     Post
-        .find({ userId: req.body.userId })
+        .find(userId ? { userId } : {})
         .populate('creator')
         .sort([['date', -1]])
         .exec((findError, findResult) => {
@@ -23,7 +24,7 @@ router.post('/my-page', (req, res) => {
                         posts: findResult
                     }
                 });
-            }
+            };
         });
 });
 

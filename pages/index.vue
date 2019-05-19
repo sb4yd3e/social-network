@@ -36,11 +36,15 @@ export default {
         this.$store.dispatch('clearMyPage');
     },
     methods: {
-        addPost() {
-            this.$store.dispatch('addMyPagePost', {
-                string: this.$store.state.myPage.addPostInputValue,
-                ...this.$store.state.layout.user
-            });
+        addPost(e) {
+            e.preventDefault();
+
+            if (!!this.$store.state.myPage.addPostInputValue.trim().length) {
+                this.$store.dispatch('addMyPagePost', {
+                    string: this.$store.state.myPage.addPostInputValue,
+                    ...this.$store.state.layout.user
+                });
+            }
         },
         removePost(id) {
             this.$store.dispatch('removeMyPagePost', { 

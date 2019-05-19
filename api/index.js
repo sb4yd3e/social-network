@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const layout = require('./routes/layout');
-const myPage = require('./routes/my-page');
-const feed = require('./routes/feed');
+const posts = require('./routes/posts');
 const addPost = require('./routes/add-post');
 const removePost = require('./routes/remove-post');
 
@@ -17,8 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(layout);
-app.use(myPage);
-app.use(feed);
+app.use(posts);
 app.use(addPost);
 app.use(removePost);
 
