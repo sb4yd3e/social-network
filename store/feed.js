@@ -10,6 +10,17 @@ export default {
             state.posts = payload.posts;
             state.inited = true;
         },
+        UPDATE_FEED_LIKES(state, payload) {
+            state.posts = state.posts.map((item) => {
+                if (payload.postId === item._id) {
+                    return {
+                        ...item,
+                        likes: payload.likes
+                    };
+                }
+                return item;
+            })
+        },
         CLEAR_FEED(state) {
             state.inited = false;
             state.posts = [];
@@ -22,8 +33,16 @@ export default {
             });
         },
         removeFeedPost({ dispatch }, data) {
-            axios.post('/api/remove-post', data).then((response) => {
+            axios.post('/api/remove-post', data).then(() => {
                 return dispatch('fetchFeed');
+            });
+        },
+        likeFeedPost({ commit }, data) {
+            axios.post('/api/like-post', data).then((response) => {
+                commit('UPDATE_FEED_LIKES', {
+                    likes: response.data.data.likes,
+                    postId: data.postId
+                })
             });
         },
         clearFeed({ commit }) {

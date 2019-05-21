@@ -1,13 +1,13 @@
 <template>
     <div v-if="this.$store.state.myPage.inited">     
         <AddPost
-            :value="this.$store.state.myPage.addPostInputValue"
-            :change="(value) => { this.$store.commit('CHANGE_ADD_POST_INPUT_VALUE', value) }"
+            :value="this.$store.state.myPage.inputValue"
+            :change="(value) => { this.$store.commit('CHANGE_INPUT_VALUE', value) }"
             :submit="addPost"
         />
         <ul v-if="!!this.$store.state.myPage.posts.length">
             <li v-for="post in this.$store.state.myPage.posts" :key="post._id">
-                <Post v-bind="post" :currentUserId="$store.state.layout.user.userId" :remove="removePost" />
+                <Post v-bind="post" :currentUserId="$store.state.layout.user._id" :remove="removePost" :like="likePost" />
             </li>
         </ul>
     </div>
@@ -29,7 +29,7 @@ export default {
     },
     mounted() {
         this.$store.dispatch('fetchMyPage', {
-            userId: this.$store.state.layout.user.userId
+            _id: this.$store.state.layout.user._id
         });
     },
     destroyed() {
@@ -39,9 +39,9 @@ export default {
         addPost(e) {
             e.preventDefault();
 
-            if (!!this.$store.state.myPage.addPostInputValue.trim().length) {
+            if (!!this.$store.state.myPage.inputValue.trim().length) {
                 this.$store.dispatch('addMyPagePost', {
-                    string: this.$store.state.myPage.addPostInputValue,
+                    string: this.$store.state.myPage.inputValue,
                     ...this.$store.state.layout.user
                 });
             }
@@ -50,6 +50,12 @@ export default {
             this.$store.dispatch('removeMyPagePost', { 
                 id,
                 ...this.$store.state.layout.user
+            });
+        },
+        likePost(postId, userId) {
+            this.$store.dispatch('likeMyPagePost', { 
+                postId,
+                userId
             });
         }
     }

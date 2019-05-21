@@ -1,12 +1,11 @@
 const { Router } = require('express');
 const router = Router();
-
+const ObjectId = require('mongodb').ObjectID;
 const Post = require('../models/post');
 
 router.post('/posts', (req, res) => {
-    const { userId } = req.body;
     Post
-        .find(userId ? { userId } : {})
+        .find(req.body._id ? { creator: new ObjectId(req.body._id) } : {})
         .populate('creator')
         .sort([['date', -1]])
         .exec((findError, findResult) => {

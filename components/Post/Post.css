@@ -45,4 +45,16 @@
         margin: 0;
         word-wrap: break-word;
     }
+    
+    &-Footer {
+        display: flex;
+    }
+
+    &-FooterItem {
+        margin-right: 20px;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
 }

@@ -1,18 +1,17 @@
 const { Router } = require('express');
 const router = Router();
-
 const Post = require('../models/post');
 
 router.post('/add-post', (req, res) => {
     const post = new Post({
-        userId: req.body.userId,
         creator: req.body._id,
         date: new Date(),
-        text: req.body.string
+        text: req.body.string,
+        likes: []
     });
 
     post
-        .save((saveError, saveResult) => {
+        .save((saveError) => {
             if (saveError) {
                 res.json({
                     status: false,

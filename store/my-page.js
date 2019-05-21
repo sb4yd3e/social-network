@@ -4,15 +4,29 @@ export default {
     state: {
         inited: false,
         posts: [],
-        addPostInputValue: ''
+        inputValue: ''
     },
     mutations: {
         FETCH_MY_PAGE(state, payload) {
             state.posts = payload.posts;
             state.inited = true;
         },
-        CHANGE_ADD_POST_INPUT_VALUE(state, payload) {
-            state.addPostInputValue = payload;
+        CHANGE_INPUT_VALUE(state, payload) {
+            state.inputValue = payload;
+        },
+        CLEAR_INPUT(state) {
+            state.inputValue = '';
+        },
+        UPDATE_MY_PAGE_LIKES(state, payload) {
+            state.posts = state.posts.map((item) => {
+                if (payload.postId === item._id) {
+                    return {
+                        ...item,
+                        likes: payload.likes
+                    };
+                }
+                return item;
+            })
         },
         CLEAR_MY_PAGE(state) {
             state.inited = false;
@@ -25,18 +39,29 @@ export default {
                 return commit('FETCH_MY_PAGE', response.data.data);
             });
         },
-        addMyPagePost({ dispatch, rootState }, data) {
+        addMyPagePost({ dispatch, rootState, commit }, data) {
             axios.post('/api/add-post', data).then((response) => {
+                return [
+                    dispatch('fetchMyPage', {
+                        _id: rootState.layout.user._id
+                    }),
+                    commit('CLEAR_INPUT')
+                ]
+            });
+        },
+        removeMyPagePost({ dispatch, rootState }, data) {
+            axios.post('/api/remove-post', data).then((response) => {
                 return dispatch('fetchMyPage', {
-                    userId: rootState.layout.user.userId
+                    _id: rootState.layout.user._id
                 });
             });
         },
-        removeMyPagePost({ dispatch, state }, data) {
-            axios.post('/api/remove-post', data).then((response) => {
-                return dispatch('fetchMyPage', {
-                    userId: rootState.layout.user.userId
-                });
+        likeMyPagePost({ commit }, data) {
+            axios.post('/api/like-post', data).then((response) => {
+                commit('UPDATE_MY_PAGE_LIKES', {
+                    likes: response.data.data.likes,
+                    postId: data.postId
+                })
             });
         },
         clearMyPage({ commit }) {

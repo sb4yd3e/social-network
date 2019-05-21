@@ -13,7 +13,12 @@
             <p class="Post-Text">{{text}}</p>
         </div>
         <footer class="Post-Footer">
-            <Link v-if="userId === currentUserId" :text="'Удалить'" :click="() => {remove(_id)}" />
+            <div class="Post-FooterItem">
+                <Link :text="`👍 ${likes.length}`" :click="() => {like(_id, currentUserId)}" />
+            </div>
+            <div class="Post-FooterItem">
+                <Link v-if="creator._id === currentUserId" :text="'Удалить'" :click="() => {remove(_id)}" />
+            </div>
         </footer>
     </article>
 </template>
@@ -27,11 +32,12 @@ export default {
     },
     props: {
         _id: String,
-        userId: String,
         currentUserId: String,
         date: String,
         text: String,
         creator: Object,
+        likes: Array,
+        like: Function,
         remove: Function
     }
 };

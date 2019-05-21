@@ -2,7 +2,7 @@
     <div v-if="this.$store.state.feed.inited">
         <ul v-if="!!this.$store.state.feed.posts.length">
             <li v-for="post in this.$store.state.feed.posts" :key="post._id">
-                <Post v-bind="post" :currentUserId="$store.state.layout.user.userId" :remove="removePost" />
+                <Post v-bind="post" :currentUserId="$store.state.layout.user._id" :remove="removePost" :like="likePost" />
             </li>
         </ul>
     </div>
@@ -34,6 +34,12 @@ export default {
     methods: {
         removePost(id) {
             this.$store.dispatch('removeFeedPost', { id });
+        },
+        likePost(postId, userId) {
+            this.$store.dispatch('likeFeedPost', { 
+                postId,
+                userId
+            });
         }
     }
 };
