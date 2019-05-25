@@ -8,6 +8,8 @@ const posts = require('./routes/posts');
 const addPost = require('./routes/add-post');
 const removePost = require('./routes/remove-post');
 const likePost = require('./routes/like-post');
+const users = require('./routes/users');
+const user = require('./routes/user');
 
 const app = express();
 
@@ -21,6 +23,8 @@ app.use(posts);
 app.use(addPost);
 app.use(removePost);
 app.use(likePost);
+app.use(users);
+app.use(user);
 
 mongoose.connect('mongodb+srv://johnelectron:geniculata@cluster0-ugs7k.mongodb.net/main', { useNewUrlParser: true, useFindAndModify: false }, (err) => {
     if (err) return console.error(err);

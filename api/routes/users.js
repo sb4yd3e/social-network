@@ -1,12 +1,11 @@
 const { Router } = require('express');
 const router = Router();
-const ObjectId = require('mongodb').ObjectID;
-const Post = require('../models/post');
+const User = require('../models/user');
 
-router.post('/remove-post', (req, res) => {
-    Post
-        .findOneAndRemove({ _id: new ObjectId(req.body.id) })
-        .exec((findError) => {
+router.post('/users', (req, res) => {
+    User
+        .find()
+        .exec((findError, findResult) => {
             if (findError) {
                 res.json({
                     status: false,
@@ -17,9 +16,11 @@ router.post('/remove-post', (req, res) => {
             } else {
                 res.json({
                     status: true,
-                    data: {}
+                    data: {
+                        list: findResult
+                    }
                 });
-            }
+            };
         });
 });
 

@@ -7,6 +7,7 @@ router.post('/posts', (req, res) => {
     Post
         .find(req.body._id ? { creator: new ObjectId(req.body._id) } : {})
         .populate('creator')
+        .populate('likes')
         .sort([['date', -1]])
         .exec((findError, findResult) => {
             if (findError) {

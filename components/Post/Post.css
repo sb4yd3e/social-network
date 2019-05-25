@@ -9,6 +9,8 @@
         align-items: center;
         justify-content: space-between;
         margin: 0 0 10px;
+        text-decoration: none;
+        color: inherit;
     }
 
     &-PhotoWrapper {

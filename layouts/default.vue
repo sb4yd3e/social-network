@@ -1,11 +1,11 @@
 <template>
-    <div class="Layout" v-if="this.$store.state.layout.inited">
+    <div class="Layout" v-if="$store.state.layout.inited">
         <div class="Container">
-            <div v-if="this.$store.state.layout.user.status" class="Layout-Body">
+            <div v-if="$store.state.layout.user.status" class="Layout-Body">
                 <div class="Layout-Nav">
                     <Nav
                         :signOut="signOut"
-                        :photo="this.$store.state.layout.user.photo"
+                        :photo="$store.state.layout.user.photo"
                         :nav="nav"
                     />
                 </div>

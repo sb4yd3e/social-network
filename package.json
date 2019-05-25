@@ -1,7 +1,7 @@
 {
     "name": "social-network",
     "version": "1.0.0",
-    "description": "vue.js + nuxt.js + postcss + node.js + mongoDB",
+    "description": "vue.js + nuxt.js + postcss + node.js + express + mongoDB",
     "author": "Nikita Ivanov <johnelectron8@gmail.com>",
     "private": true,
     "scripts": {

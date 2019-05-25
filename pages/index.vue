@@ -1,21 +1,31 @@
 <template>
-    <div v-if="this.$store.state.myPage.inited">     
+    <div v-if="$store.state.myPage.inited">     
+        <Profile v-bind="$store.state.layout.user" :canChange="true" />
         <AddPost
-            :value="this.$store.state.myPage.inputValue"
-            :change="(value) => { this.$store.commit('CHANGE_INPUT_VALUE', value) }"
+            :value="$store.state.myPage.inputValue"
+            :change="(value) => { $store.commit('CHANGE_INPUT_VALUE', value) }"
             :submit="addPost"
         />
-        <ul v-if="!!this.$store.state.myPage.posts.length">
-            <li v-for="post in this.$store.state.myPage.posts" :key="post._id">
-                <Post v-bind="post" :currentUserId="$store.state.layout.user._id" :remove="removePost" :like="likePost" />
+        <ul v-if="!!$store.state.myPage.posts.length">
+            <li v-for="post in $store.state.myPage.posts" :key="post._id">
+                <Post 
+                    v-bind="post"
+                    :currentUserId="$store.state.layout.user._id"
+                    :link="$store.state.layout.user._id === post.creator._id ? '/' : `/users/${post.creator._id}`"
+                    :remove="removePost"
+                    :like="likePost"
+                />
             </li>
         </ul>
+        <Empty v-else :text="'Нет ни одной добавленной записи'" />
     </div>
 </template>
 
 <script>
+import Profile from '../components/Profile/Profile.vue';
 import AddPost from '../components/AddPost/AddPost.vue';
 import Post from '../components/Post/Post.vue';
+import Empty from '../components/Empty/Empty.vue';
 
 export default {
     head() {
@@ -24,8 +34,10 @@ export default {
         };
     },
     components: {
+        Profile,
         AddPost,
-        Post
+        Post,
+        Empty
     },
     mounted() {
         this.$store.dispatch('fetchMyPage', {
