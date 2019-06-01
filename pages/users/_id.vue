@@ -1,9 +1,9 @@
 <template>
-    <div v-if="$store.state.user.inited">     
-        <Profile v-bind="$store.state.user.user" :canChange="false" />
+    <div v-if="$store.state.user.inited">
+        <Profile v-bind="$store.state.user.user" :canChange="false"/>
         <ul v-if="!!$store.state.user.posts.length">
             <li v-for="post in $store.state.user.posts" :key="post._id">
-                <Post 
+                <Post
                     v-bind="post"
                     :currentUserId="$store.state.layout.user._id"
                     :link="`/users/${post.creator._id}`"
@@ -11,7 +11,7 @@
                 />
             </li>
         </ul>
-        <Empty v-else :text="'Нет ни одной добавленной записи'" />
+        <Empty v-else :text="'Нет ни одной добавленной записи'"/>
     </div>
 </template>
 
@@ -23,7 +23,11 @@ import Empty from '../../components/Empty/Empty.vue';
 export default {
     head() {
         return {
-            title: this.$store.state.user.user ? `${this.$store.state.user.user.firstName} ${this.$store.state.user.user.lastName}` : ''
+            title: this.$store.state.user.user
+                ? `${this.$store.state.user.user.firstName} ${
+                      this.$store.state.user.user.lastName
+                  }`
+                : ''
         };
     },
     components: {
@@ -41,7 +45,7 @@ export default {
     },
     methods: {
         likePost(postId, userId) {
-            this.$store.dispatch('likeUserPost', { 
+            this.$store.dispatch('likeUserPost', {
                 postId,
                 userId
             });

@@ -4,9 +4,8 @@ const ObjectId = require('mongodb').ObjectID;
 const User = require('../models/user');
 
 router.post('/user', (req, res) => {
-    User
-        .findOne({ _id: new ObjectId(req.body._id) })
-        .exec((findError, findResult) => {
+    User.findOne({ _id: new ObjectId(req.body._id) }).exec(
+        (findError, findResult) => {
             if (findError) {
                 res.json({
                     status: false,
@@ -21,8 +20,9 @@ router.post('/user', (req, res) => {
                         user: findResult
                     }
                 });
-            };
-        });
+            }
+        }
+    );
 });
 
 module.exports = router;

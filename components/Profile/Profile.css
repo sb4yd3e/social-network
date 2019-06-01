@@ -6,7 +6,7 @@
 
     &-Photo {
         width: 96px;
-        height: auto;
+        height: 96px;
         margin: 0 20px 0 0;
         border-radius: var(--border-radius);
     }

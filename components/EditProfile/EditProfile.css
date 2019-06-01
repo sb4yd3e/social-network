@@ -1,5 +1,9 @@
-.Empty {
+.EditProfile {
     display: inline-block;
     width: 100%;
     margin: 10px 0;
+
+    .InputText {
+        margin: 0 0 20px;
+    }
 }

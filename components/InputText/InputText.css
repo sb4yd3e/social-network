@@ -1,33 +1,22 @@
-.input-text {
-    &.is-error {
-        .input-text__input {
-            color: var(--color-red);
-        }
-
-        .error-message {
-            padding-top: 5px;
-        }
-    }
-
-    &__header {
+.InputText {
+    &-Header {
         padding: 0 0 5px;
     }
 
-    &__inner {
+    &-Inner {
         position: relative;
     }
 
-    &__input {	
+    &-Input {
         width: 100%;
-        height: 40px;	
+        height: 40px;
         padding: 0 15px;
         font-size: inherit;
         line-height: 40px;
-        font-family: inherit;	
+        font-family: inherit;
         background-color: var(--color-white);
-        border: none;	
+        border: none;
         border-radius: var(--border-radius);
-        transition: border 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
         -webkit-appearance: none;
 
         &:focus {
@@ -42,14 +31,5 @@
         &::placeholder {
             color: var(--color-graymiddle);
         }
-    }
-
-    textarea {
-        display: block;
-        height: 170px;
-        min-height: 170px;
-        max-height: 170px;
-        overflow-y: hidden;
-        resize: none;
     }
 }

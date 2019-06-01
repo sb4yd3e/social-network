@@ -14,10 +14,14 @@
         </div>
         <footer class="Post-Footer">
             <div class="Post-FooterItem">
-                <Link :text="getLikeText" :click="() => {like(_id, currentUserId)}" />
+                <Link :text="getLikeText" :click="() => {like(_id, currentUserId)}"/>
             </div>
             <div class="Post-FooterItem">
-                <Link v-if="creator._id === currentUserId" :text="'Удалить'" :click="() => {remove(_id)}" />
+                <Link
+                    v-if="creator._id === currentUserId"
+                    :text="'Удалить'"
+                    :click="() => {remove(_id)}"
+                />
             </div>
         </footer>
     </article>
@@ -43,7 +47,9 @@ export default {
     },
     computed: {
         getLikeText: function() {
-            return this.likes.find((item) => item._id === this.currentUserId) ? `❤️ ${this.likes.length}` : `🖤 ${this.likes.length}`;
+            return this.likes.find(item => item._id === this.currentUserId)
+                ? `❤️ ${this.likes.length}`
+                : `🖤 ${this.likes.length}`;
         }
     }
 };

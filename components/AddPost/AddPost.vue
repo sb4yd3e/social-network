@@ -1,7 +1,14 @@
 <template>
-    <form class="AddPost" action="" method="" autocomplete="off" novalidate :submit="submit">
+    <form class="AddPost" action method autocomplete="off" novalidate :submit="submit">
         <div class="AddPost-Field">
-            <InputText :type="'text'" :name="'add_post'" :value="value" :change="change" :autocomplete="false" :placeholder="'Добавить новость'" />
+            <InputText
+                :type="'text'"
+                :name="'add_post'"
+                :value="value"
+                :change="change"
+                :autocomplete="false"
+                :placeholder="'Добавить новость'"
+            />
         </div>
         <div class="AddPost-Button">
             <Button :text="'Опубликовать'" :type="'submit'" :click="submit"/>

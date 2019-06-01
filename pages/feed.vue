@@ -8,10 +8,10 @@
                     :link="$store.state.layout.user._id === post.creator._id ? '/' : `/users/${post.creator._id}`"
                     :remove="removePost"
                     :like="likePost"
-                    />
+                />
             </li>
         </ul>
-        <Empty v-else :text="'Нет ни одной добавленной записи'" />
+        <Empty v-else :text="'Нет ни одной добавленной записи'"/>
     </div>
 </template>
 
@@ -40,7 +40,7 @@ export default {
             this.$store.dispatch('removeFeedPost', { id });
         },
         likePost(postId, userId) {
-            this.$store.dispatch('likeFeedPost', { 
+            this.$store.dispatch('likeFeedPost', {
                 postId,
                 userId
             });

@@ -11,7 +11,7 @@ export default {
             state.inited = true;
         },
         UPDATE_FEED_LIKES(state, payload) {
-            state.posts = state.posts.map((item) => {
+            state.posts = state.posts.map(item => {
                 if (payload.postId === item._id) {
                     return {
                         ...item,
@@ -19,7 +19,7 @@ export default {
                     };
                 }
                 return item;
-            })
+            });
         },
         CLEAR_FEED(state) {
             state.inited = false;
@@ -28,7 +28,7 @@ export default {
     },
     actions: {
         fetchFeed({ commit }, data) {
-            axios.post('/api/posts').then((response) => {
+            axios.post('/api/posts').then(response => {
                 return commit('FETCH_FEED', response.data.data);
             });
         },
@@ -38,15 +38,15 @@ export default {
             });
         },
         likeFeedPost({ commit }, data) {
-            axios.post('/api/like-post', data).then((response) => {
-                commit('UPDATE_FEED_LIKES', {
+            axios.post('/api/like-post', data).then(response => {
+                return commit('UPDATE_FEED_LIKES', {
                     likes: response.data.data.likes,
                     postId: data.postId
-                })
+                });
             });
         },
         clearFeed({ commit }) {
             return commit('CLEAR_FEED');
         }
     }
-}
+};

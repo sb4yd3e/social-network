@@ -10,6 +10,7 @@ const removePost = require('./routes/remove-post');
 const likePost = require('./routes/like-post');
 const users = require('./routes/users');
 const user = require('./routes/user');
+const editProfile = require('./routes/edit-profile');
 
 const app = express();
 
@@ -25,10 +26,15 @@ app.use(removePost);
 app.use(likePost);
 app.use(users);
 app.use(user);
+app.use(editProfile);
 
-mongoose.connect('mongodb+srv://johnelectron:geniculata@cluster0-ugs7k.mongodb.net/main', { useNewUrlParser: true, useFindAndModify: false }, (err) => {
-    if (err) return console.error(err);
-});
+mongoose.connect(
+    'mongodb+srv://johnelectron:geniculata@cluster0-ugs7k.mongodb.net/main',
+    { useNewUrlParser: true, useFindAndModify: false },
+    err => {
+        if (err) return console.error(err);
+    }
+);
 
 module.exports = {
     path: '/api',

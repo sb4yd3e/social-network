@@ -17,7 +17,7 @@ export default {
     },
     actions: {
         fetchUsers({ commit }, data) {
-            axios.post('/api/users').then((response) => {
+            axios.post('/api/users').then(response => {
                 return commit('FETCH_USERS', response.data.data);
             });
         },
@@ -25,4 +25,4 @@ export default {
             return commit('CLEAR_USERS');
         }
     }
-}
+};

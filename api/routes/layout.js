@@ -13,9 +13,8 @@ router.post('/layout', (req, res) => {
             }
         });
     } else {
-        User
-            .findOne({ userId: req.body.user.Eea })
-            .exec((findError, findResult) => {
+        User.findOne({ userId: req.body.user.Eea }).exec(
+            (findError, findResult) => {
                 if (findError) {
                     res.json({
                         status: false,
@@ -23,7 +22,7 @@ router.post('/layout', (req, res) => {
                             error: findError
                         }
                     });
-                };
+                }
 
                 if (findResult) {
                     res.json({
@@ -43,26 +42,26 @@ router.post('/layout', (req, res) => {
                         email: req.body.user.U3
                     });
 
-                    user
-                        .save((saveError, saveResult) => {
-                            if (saveError) {
-                                res.json({
-                                    status: false,
-                                    data: {
-                                        error: saveError
-                                    }
-                                });
-                            } else {
-                                res.json({
-                                    status: true,
-                                    data: {
-                                        user: { status: true, ...saveResult._doc }
-                                    }
-                                });
-                            }
-                        });
+                    user.save((saveError, saveResult) => {
+                        if (saveError) {
+                            res.json({
+                                status: false,
+                                data: {
+                                    error: saveError
+                                }
+                            });
+                        } else {
+                            res.json({
+                                status: true,
+                                data: {
+                                    user: { status: true, ...saveResult._doc }
+                                }
+                            });
+                        }
+                    });
                 }
-            });
+            }
+        );
     }
 });
 

@@ -6,7 +6,7 @@
                     <nuxt-link class="Link" :to="item.url">{{item.name}}</nuxt-link>
                 </li>
                 <li class="Nav-Item">
-                    <Link :text="'Выход'" :click="signOut" />
+                    <Link :text="'Выход'" :click="signOut"/>
                 </li>
             </ul>
         </nav>

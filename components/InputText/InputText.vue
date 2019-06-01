@@ -1,19 +1,17 @@
 <template>
     <div class="InputText">
-        <div class="input-text">
-            <div class="input-text__header" v-if="label">
-                <label class="input-text__label">{{label}}</label>
-            </div>
-            <div class="input-text__inner">
-                <input
-                    class="input-text__input"
-                    :type="type"
-                    :name="name"
-                    :placeholder="placeholder"
-                    :autocomplete="autocomplete ? 'on' : 'off'"
-                    v-model="model"
-                >
-            </div>
+        <div class="InputText-Header" v-if="label">
+            <label class="InputText-Label">{{label}}</label>
+        </div>
+        <div class="InputText-Inner">
+            <input
+                class="InputText-Input"
+                :type="type"
+                :name="name"
+                :placeholder="placeholder"
+                :autocomplete="autocomplete ? 'on' : 'off'"
+                v-model="model"
+            >
         </div>
     </div>
 </template>
@@ -35,7 +33,7 @@ export default {
                 return this.value;
             },
             set(value) {
-                this.change(value);
+                this.change(value, this.name);
             }
         }
     }

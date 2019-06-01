@@ -1,13 +1,11 @@
 <template>
-    <div class="Empty">
-        {{text}}
-    </div>
+    <div class="Empty">{{text}}</div>
 </template>
 
 <script>
 export default {
     props: {
-        text: String,
+        text: String
     }
 };
 </script>

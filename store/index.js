@@ -4,14 +4,17 @@ import myPage from './my-page';
 import feed from './feed';
 import users from './users';
 import user from './user';
+import edit from './edit';
 
-export default () => new Vuex.Store({
-    namespaced: true,
-    modules: {
-        layout,
-        myPage,
-        feed,
-        users,
-        user
-    }
-});
+export default () =>
+    new Vuex.Store({
+        namespaced: true,
+        modules: {
+            layout,
+            myPage,
+            feed,
+            users,
+            user,
+            edit
+        }
+    });

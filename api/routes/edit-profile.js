@@ -1,22 +1,20 @@
 const { Router } = require('express');
 const router = Router();
 const ObjectId = require('mongodb').ObjectID;
-const Post = require('../models/post');
+const User = require('../models/user');
 
-router.post('/add-post', (req, res) => {
-    const post = new Post({
-        creator: new ObjectId(req.body._id),
-        date: new Date(),
-        text: req.body.string,
-        likes: []
-    });
+router.post('/edit-profile', (req, res) => {
+    const { firstName, lastName, email } = req.body;
 
-    post.save(saveError => {
-        if (saveError) {
+    User.findOneAndUpdate(
+        { _id: new ObjectId(req.body._id) },
+        { firstName, lastName, email }
+    ).exec((updateError, updateResult) => {
+        if (updateError) {
             res.json({
                 status: false,
                 data: {
-                    error: saveError
+                    error: updateError
                 }
             });
         } else {

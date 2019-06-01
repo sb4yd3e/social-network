@@ -16,7 +16,7 @@
             </tr>
             <tr class="Profile-Row" v-if="canChange">
                 <td class="Profile-Cell">
-                    <nuxt-link class="Link" :to="'/editProfile'">Изменить</nuxt-link>
+                    <nuxt-link class="Link" :to="'/edit'">Изменить</nuxt-link>
                 </td>
             </tr>
         </table>
@@ -30,7 +30,7 @@ export default {
         lastName: String,
         email: String,
         photo: String,
-        canChange: Boolean,
+        canChange: Boolean
     }
 };
 </script>

@@ -4,8 +4,7 @@ const ObjectId = require('mongodb').ObjectID;
 const Post = require('../models/post');
 
 router.post('/like-post', (req, res) => {
-    Post
-        .findOne({ _id: new ObjectId(req.body.postId) })
+    Post.findOne({ _id: new ObjectId(req.body.postId) })
         .populate('likes')
         .exec((findError, findResult) => {
             if (findError) {
@@ -16,17 +15,20 @@ router.post('/like-post', (req, res) => {
                     }
                 });
             } else {
-                Post
-                    .findOneAndUpdate(
-                        { _id: new ObjectId(req.body.postId) },
-                        {
-                            likes:
-                                findResult.likes.find(item => (item._id).toString() === req.body.userId)
-                                    ? findResult.likes.filter(item => (item._id).toString() !== req.body.userId)
-                                    : [...findResult.likes, req.body.userId]
-                        },
-                        { new: true }
-                    )
+                Post.findOneAndUpdate(
+                    { _id: new ObjectId(req.body.postId) },
+                    {
+                        likes: findResult.likes.find(
+                            item => item._id.toString() === req.body.userId
+                        )
+                            ? findResult.likes.filter(
+                                  item =>
+                                      item._id.toString() !== req.body.userId
+                              )
+                            : [...findResult.likes, req.body.userId]
+                    },
+                    { new: true }
+                )
                     .populate('likes')
                     .exec((updateError, updateResult) => {
                         if (updateError) {
@@ -43,7 +45,7 @@ router.post('/like-post', (req, res) => {
                                     likes: updateResult.likes
                                 }
                             });
-                        };
+                        }
                     });
             }
         });

@@ -32,10 +32,10 @@
 
     --color-black: #010101;
     --color-blacklight: #202020;
-    --color-gray: #E6ECF0;
-    --color-graymiddle: #B1B1B1;
+    --color-gray: #e6ecf0;
+    --color-graymiddle: #b1b1b1;
     --color-graydark: #666666;
-    --color-white: #FFFFFF;
+    --color-white: #ffffff;
 
     --border-radius: 4px;
     --box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.05),

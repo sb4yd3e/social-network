@@ -3,11 +3,7 @@
         <div class="Container">
             <div v-if="$store.state.layout.user.status" class="Layout-Body">
                 <div class="Layout-Nav">
-                    <Nav
-                        :signOut="signOut"
-                        :photo="$store.state.layout.user.photo"
-                        :nav="nav"
-                    />
+                    <Nav :signOut="signOut" :photo="$store.state.layout.user.photo" :nav="nav"/>
                 </div>
                 <div class="Layout-Content">
                     <main class="Layout-Main">

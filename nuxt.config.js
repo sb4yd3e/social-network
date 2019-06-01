@@ -64,10 +64,6 @@ module.exports = {
         ]
     },
     // modules: ['@nuxtjs/svg-sprite'],
-    plugins: [
-        { src: '~/assets/scripts/app.js', ssr: false }
-    ],
-    serverMiddleware: [
-        '~/api/index.js'
-    ]
+    plugins: [{ src: '~/assets/scripts/app.js', ssr: false }],
+    serverMiddleware: ['~/api/index.js']
 };

@@ -4,9 +4,8 @@ const ObjectId = require('mongodb').ObjectID;
 const Post = require('../models/post');
 
 router.post('/remove-post', (req, res) => {
-    Post
-        .findOneAndRemove({ _id: new ObjectId(req.body.id) })
-        .exec((findError) => {
+    Post.findOneAndRemove({ _id: new ObjectId(req.body.id) }).exec(
+        findError => {
             if (findError) {
                 res.json({
                     status: false,
@@ -20,7 +19,8 @@ router.post('/remove-post', (req, res) => {
                     data: {}
                 });
             }
-        });
+        }
+    );
 });
 
 module.exports = router;

@@ -1,6 +1,6 @@
 <template>
-    <div v-if="$store.state.myPage.inited">     
-        <Profile v-bind="$store.state.layout.user" :canChange="true" />
+    <div v-if="$store.state.myPage.inited">
+        <Profile v-bind="$store.state.layout.user" :canChange="true"/>
         <AddPost
             :value="$store.state.myPage.inputValue"
             :change="(value) => { $store.commit('CHANGE_INPUT_VALUE', value) }"
@@ -8,7 +8,7 @@
         />
         <ul v-if="!!$store.state.myPage.posts.length">
             <li v-for="post in $store.state.myPage.posts" :key="post._id">
-                <Post 
+                <Post
                     v-bind="post"
                     :currentUserId="$store.state.layout.user._id"
                     :link="$store.state.layout.user._id === post.creator._id ? '/' : `/users/${post.creator._id}`"
@@ -17,7 +17,7 @@
                 />
             </li>
         </ul>
-        <Empty v-else :text="'Нет ни одной добавленной записи'" />
+        <Empty v-else :text="'Нет ни одной добавленной записи'"/>
     </div>
 </template>
 
@@ -30,7 +30,9 @@ import Empty from '../components/Empty/Empty.vue';
 export default {
     head() {
         return {
-            title: `${this.$store.state.layout.user.firstName} ${this.$store.state.layout.user.lastName}`
+            title: `${this.$store.state.layout.user.firstName} ${
+                this.$store.state.layout.user.lastName
+            }`
         };
     },
     components: {
@@ -59,13 +61,13 @@ export default {
             }
         },
         removePost(id) {
-            this.$store.dispatch('removeMyPagePost', { 
+            this.$store.dispatch('removeMyPagePost', {
                 id,
                 ...this.$store.state.layout.user
             });
         },
         likePost(postId, userId) {
-            this.$store.dispatch('likeMyPagePost', { 
+            this.$store.dispatch('likeMyPagePost', {
                 postId,
                 userId
             });

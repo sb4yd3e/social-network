@@ -2,7 +2,10 @@
     <div v-if="$store.state.users.inited">
         <ul v-if="!!$store.state.users.list.length">
             <li v-for="user in $store.state.users.list" :key="user._id">
-                <User v-bind="user" :href="$store.state.layout.user._id === user._id ? '/' : `/users/${user._id}`" />
+                <User
+                    v-bind="user"
+                    :href="$store.state.layout.user._id === user._id ? '/' : `/users/${user._id}`"
+                />
             </li>
         </ul>
     </div>
