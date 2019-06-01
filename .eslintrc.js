@@ -9,6 +9,5 @@ module.exports = {
     },
     extends: ['plugin:vue/essential'],
     plugins: ['vue'],
-    rules: {
-    }
+    rules: {}
 };
