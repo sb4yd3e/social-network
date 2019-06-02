@@ -11,4 +11,8 @@
     &:hover {
         color: var(--color-black);
     }
+
+    &.is-active {
+        color: var(--color-black);
+    }
 }

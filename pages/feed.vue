@@ -1,5 +1,10 @@
 <template>
     <div v-if="$store.state.feed.inited">
+        <Sort
+            :sortValue="$store.state.feed.sortValue"
+            :sortDirection="$store.state.feed.sortDirection"
+            :sort="changeSort"
+        />
         <ul v-if="!!$store.state.feed.posts.length">
             <li v-for="post in $store.state.feed.posts" :key="post._id">
                 <Post
@@ -16,6 +21,7 @@
 </template>
 
 <script>
+import Sort from '../components/Sort/Sort.vue';
 import Post from '../components/Post/Post.vue';
 import Empty from '../components/Empty/Empty.vue';
 
@@ -26,16 +32,24 @@ export default {
         };
     },
     components: {
+        Sort,
         Post,
         Empty
     },
     mounted() {
-        this.$store.dispatch('fetchFeed');
+        const { sortValue, sortDirection } = this.$store.state.feed;
+        this.$store.dispatch('fetchFeed', { sortValue, sortDirection });
     },
     destroyed() {
         this.$store.dispatch('clearFeed');
     },
     methods: {
+        changeSort(sortValue, sortDirection) {
+            this.$store.dispatch('changeFeedSort', {
+                sortValue,
+                sortDirection
+            });
+        },
         removePost(id) {
             this.$store.dispatch('removeFeedPost', { id });
         },

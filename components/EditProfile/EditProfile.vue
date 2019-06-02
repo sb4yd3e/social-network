@@ -2,7 +2,7 @@
     <form class="EditProfile" action method autocomplete="off" novalidate>
         <InputText
             :type="'text'"
-            :label="'Имя'"
+            :label="'Имя:'"
             :name="'firstName'"
             :value="firstName"
             :change="change"
@@ -10,7 +10,7 @@
         />
         <InputText
             :type="'text'"
-            :label="'Фамилия'"
+            :label="'Фамилия:'"
             :name="'lastName'"
             :value="lastName"
             :change="change"
@@ -18,7 +18,7 @@
         />
         <InputText
             :type="'text'"
-            :label="'Email'"
+            :label="'Email:'"
             :name="'email'"
             :value="email"
             :change="change"

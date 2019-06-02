@@ -1,10 +1,17 @@
 <template>
     <div v-if="$store.state.myPage.inited">
         <Profile v-bind="$store.state.layout.user" :canChange="true"/>
-        <AddPost
+        <Miniform
             :value="$store.state.myPage.inputValue"
             :change="(value) => { $store.commit('CHANGE_INPUT_VALUE', value) }"
             :submit="addPost"
+            :placeholder="'Что у Вас нового?'"
+            :buttonText="'Опубликовать'"
+        />
+        <Sort
+            :sortValue="$store.state.myPage.sortValue"
+            :sortDirection="$store.state.myPage.sortDirection"
+            :sort="changeSort"
         />
         <ul v-if="!!$store.state.myPage.posts.length">
             <li v-for="post in $store.state.myPage.posts" :key="post._id">
@@ -23,27 +30,30 @@
 
 <script>
 import Profile from '../components/Profile/Profile.vue';
-import AddPost from '../components/AddPost/AddPost.vue';
+import Miniform from '../components/Miniform/Miniform.vue';
+import Sort from '../components/Sort/Sort.vue';
 import Post from '../components/Post/Post.vue';
 import Empty from '../components/Empty/Empty.vue';
 
 export default {
     head() {
         return {
-            title: `${this.$store.state.layout.user.firstName} ${
-                this.$store.state.layout.user.lastName
-            }`
+            title: this.$store.state.layout.user.fullName
         };
     },
     components: {
         Profile,
-        AddPost,
+        Miniform,
+        Sort,
         Post,
         Empty
     },
     mounted() {
+        const { sortValue, sortDirection } = this.$store.state.myPage;
         this.$store.dispatch('fetchMyPage', {
-            _id: this.$store.state.layout.user._id
+            _id: this.$store.state.layout.user._id,
+            sortValue,
+            sortDirection
         });
     },
     destroyed() {
@@ -59,6 +69,12 @@ export default {
                     ...this.$store.state.layout.user
                 });
             }
+        },
+        changeSort(sortValue, sortDirection) {
+            this.$store.dispatch('changeMyPageSort', {
+                sortValue,
+                sortDirection
+            });
         },
         removePost(id) {
             this.$store.dispatch('removeMyPagePost', {

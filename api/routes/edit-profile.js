@@ -8,7 +8,7 @@ router.post('/edit-profile', (req, res) => {
 
     User.findOneAndUpdate(
         { _id: new ObjectId(req.body._id) },
-        { firstName, lastName, email }
+        { fullName: `${firstName} ${lastName}`, firstName, lastName, email }
     ).exec((updateError, updateResult) => {
         if (updateError) {
             res.json({

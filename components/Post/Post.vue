@@ -5,7 +5,7 @@
                 <img class="Post-Photo" :src="creator.photo" alt="Фото автора поста">
             </div>
             <div class="Post-Info">
-                <h3 class="Post-Name h5">{{`${creator.firstName} ${creator.lastName}`}}</h3>
+                <h3 class="Post-Name h5">{{creator.fullName}}</h3>
                 <time class="Post-Date">{{new Date(date).toLocaleString()}}</time>
             </div>
         </nuxt-link>
@@ -46,7 +46,7 @@ export default {
         remove: Function
     },
     computed: {
-        getLikeText: function() {
+        getLikeText() {
             return this.likes.find(item => item._id === this.currentUserId)
                 ? `❤️ ${this.likes.length}`
                 : `🖤 ${this.likes.length}`;

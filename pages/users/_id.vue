@@ -24,9 +24,7 @@ export default {
     head() {
         return {
             title: this.$store.state.user.user
-                ? `${this.$store.state.user.user.firstName} ${
-                      this.$store.state.user.user.lastName
-                  }`
+                ? this.$store.state.user.user.fullName
                 : ''
         };
     },

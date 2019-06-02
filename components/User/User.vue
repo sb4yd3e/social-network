@@ -4,7 +4,7 @@
             <img class="User-Photo" :src="photo" alt="Фото пользователя">
         </div>
         <div class="User-Info">
-            <h3 class="User-Name h5">{{`${firstName} ${lastName}`}}</h3>
+            <h3 class="User-Name h5">{{fullName}}</h3>
         </div>
     </nuxt-link>
 </template>
@@ -15,6 +15,7 @@ export default {
         href: String,
         _id: String,
         photo: String,
+        fullName: String,
         firstName: String,
         lastName: String
     }

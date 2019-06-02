@@ -1,17 +1,17 @@
 <template>
-    <form class="AddPost" action method autocomplete="off" novalidate :submit="submit">
-        <div class="AddPost-Field">
+    <form class="Miniform" action method autocomplete="off" novalidate :submit="submit">
+        <div class="Miniform-Field">
             <InputText
                 :type="'text'"
                 :name="'add_post'"
                 :value="value"
                 :change="change"
                 :autocomplete="false"
-                :placeholder="'Добавить новость'"
+                :placeholder="placeholder"
             />
         </div>
-        <div class="AddPost-Button">
-            <Button :text="'Опубликовать'" :type="'submit'" :click="submit"/>
+        <div class="Miniform-Button">
+            <Button :text="buttonText" :type="'submit'" :click="submit"/>
         </div>
     </form>
 </template>
@@ -24,7 +24,9 @@ export default {
     props: {
         value: String,
         change: Function,
-        submit: Function
+        submit: Function,
+        placeholder: String,
+        buttonText: String
     },
     components: {
         InputText,

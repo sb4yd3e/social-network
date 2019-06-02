@@ -4,12 +4,18 @@ export default {
     state: {
         inited: false,
         posts: [],
+        sortValue: 'date',
+        sortDirection: -1,
         inputValue: ''
     },
     mutations: {
         FETCH_MY_PAGE(state, payload) {
             state.posts = payload.posts;
             state.inited = true;
+        },
+        CHANGE_MY_PAGE_SORT(state, payload) {
+            state.sortValue = payload.sortValue;
+            state.sortDirection = payload.sortDirection;
         },
         CHANGE_INPUT_VALUE(state, payload) {
             state.inputValue = payload;
@@ -39,20 +45,33 @@ export default {
                 return commit('FETCH_MY_PAGE', response.data.data);
             });
         },
-        addMyPagePost({ dispatch, rootState, commit }, data) {
+        changeMyPageSort({ dispatch, rootState, commit }, data) {
+            commit('CHANGE_MY_PAGE_SORT', data);
+            return dispatch('fetchMyPage', {
+                _id: rootState.layout.user._id,
+                ...data
+            });
+        },
+        addMyPagePost({ dispatch, rootState, state, commit }, data) {
             axios.post('/api/add-post', data).then(response => {
+                const { sortValue, sortDirection } = state;
                 return [
                     dispatch('fetchMyPage', {
-                        _id: rootState.layout.user._id
+                        _id: rootState.layout.user._id,
+                        sortValue,
+                        sortDirection
                     }),
                     commit('CLEAR_INPUT')
                 ];
             });
         },
-        removeMyPagePost({ dispatch, rootState }, data) {
+        removeMyPagePost({ dispatch, rootState, state }, data) {
             axios.post('/api/remove-post', data).then(response => {
+                const { sortValue, sortDirection } = state;
                 return dispatch('fetchMyPage', {
-                    _id: rootState.layout.user._id
+                    _id: rootState.layout.user._id,
+                    sortValue,
+                    sortDirection
                 });
             });
         },

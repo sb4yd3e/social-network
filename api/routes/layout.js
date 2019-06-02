@@ -36,6 +36,7 @@ router.post('/layout', (req, res) => {
                 if (!findResult) {
                     const user = new User({
                         userId: req.body.user.Eea,
+                        fullName: `${req.body.user.ofa} ${req.body.user.wea}`,
                         firstName: req.body.user.ofa,
                         lastName: req.body.user.wea,
                         photo: req.body.user.Paa,

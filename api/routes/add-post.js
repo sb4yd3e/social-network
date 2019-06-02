@@ -8,7 +8,8 @@ router.post('/add-post', (req, res) => {
         creator: new ObjectId(req.body._id),
         date: new Date(),
         text: req.body.string,
-        likes: []
+        likes: [],
+        likesLength: 0
     });
 
     post.save(saveError => {

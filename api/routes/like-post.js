@@ -15,17 +15,18 @@ router.post('/like-post', (req, res) => {
                     }
                 });
             } else {
+                const likes = findResult.likes.find(
+                    item => item._id.toString() === req.body.userId
+                )
+                    ? findResult.likes.filter(
+                          item => item._id.toString() !== req.body.userId
+                      )
+                    : [...findResult.likes, req.body.userId];
                 Post.findOneAndUpdate(
                     { _id: new ObjectId(req.body.postId) },
                     {
-                        likes: findResult.likes.find(
-                            item => item._id.toString() === req.body.userId
-                        )
-                            ? findResult.likes.filter(
-                                  item =>
-                                      item._id.toString() !== req.body.userId
-                              )
-                            : [...findResult.likes, req.body.userId]
+                        likes,
+                        likesLength: likes.length
                     },
                     { new: true }
                 )
