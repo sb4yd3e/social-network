@@ -1,7 +1,7 @@
 <template>
     <div class="Layout" v-if="$store.state.layout.inited">
         <div class="Container">
-            <div v-if="$store.state.layout.user.status" class="Layout-Body">
+            <div class="Layout-Body" v-if="$store.state.layout.user.status">
                 <div class="Layout-Nav">
                     <Nav :signOut="signOut" :photo="$store.state.layout.user.photo" :nav="nav"/>
                 </div>

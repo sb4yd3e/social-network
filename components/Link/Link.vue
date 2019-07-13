@@ -1,11 +1,20 @@
 <template>
-    <a v-if="href" class="Link js-focus-visible" :class="className" :href="href">{{text}}</a>
+    <a
+        class="Link js-focus-visible"
+        :class="className"
+        v-if="href"
+        :href="href"
+    >
+        {{text}}
+    </a>
     <button
         v-else
         class="Link js-focus-visible"
         type="button"
         @click="click"
-    >{{text}}</button>
+    >
+        {{text}}
+    </button>
 </template>
 
 <script>

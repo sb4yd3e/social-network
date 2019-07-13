@@ -53,10 +53,54 @@
     }
 
     &-FooterItem {
+        position: relative;
         margin-right: 20px;
 
         &:last-child {
             margin: 0;
         }
+
+        .Link {
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    &-Dropdown {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding-bottom: 25px;
+    }
+
+    &-DropdownInner {
+        padding: 5px;
+        background: var(--color-white);
+        box-shadow: var(--box-shadow);
+        border-radius: var(--border-radius);
+    }
+
+    &-DropdownList {
+        display: flex;
+        margin: 0 0 -10px;
+    }
+
+    &-DropdownItem {
+        width: 25px;
+        height: 25px;
+        margin: 0 10px 10px 0;
+        line-height: 25px;
+        text-align: center;
+
+        &:last-child {
+            margin: 0 0 10px;
+        }
+    }
+
+    &-DropdownImg {
+        display: block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
     }
 }

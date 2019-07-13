@@ -1,5 +1,12 @@
 <template>
-    <form class="Miniform" action method autocomplete="off" novalidate :submit="submit">
+    <form
+        class="Miniform"
+        action
+        method
+        autocomplete="off"
+        novalidate
+        :submit="submit"
+    >
         <div class="Miniform-Field">
             <InputText
                 :type="'text'"
@@ -11,7 +18,11 @@
             />
         </div>
         <div class="Miniform-Button">
-            <Button :text="buttonText" :type="'submit'" :click="submit"/>
+            <Button
+                :text="buttonText"
+                :type="'submit'"
+                :click="submit"
+            />
         </div>
     </form>
 </template>

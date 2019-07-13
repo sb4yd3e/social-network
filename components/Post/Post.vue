@@ -14,7 +14,29 @@
         </div>
         <footer class="Post-Footer">
             <div class="Post-FooterItem">
-                <Link :text="getLikeText" :click="() => {like(_id, currentUserId)}"/>
+                <div @mouseenter="dropdownVisible = true" @mouseleave="dropdownVisible = false">
+                    <Link
+                        :text="getLikeText"
+                        :click="() => {like(_id, currentUserId)}"
+                    />
+                    <div class="Post-Dropdown" v-if="dropdownVisible && !!this.likes.length">
+                        <div class="Post-DropdownInner">
+                            <ul class="Post-DropdownList">
+                                <li class="Post-DropdownItem" v-for="likeItem in this.likes.filter((item, i) => i < 4)" :key="likeItem._id">
+                                    <img
+                                        class="Post-DropdownImg"
+                                        :src="likeItem.photo"
+                                        :title="likeItem.fullName"
+                                        :alt="likeItem.fullName"
+                                    />
+                                </li>
+                                <li class="Post-DropdownItem" v-if="this.likes.length > 4">
+                                    +{{this.likes.length - 4}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="Post-FooterItem">
                 <Link
@@ -45,6 +67,9 @@ export default {
         like: Function,
         remove: Function
     },
+    data: () => ({
+        dropdownVisible: false
+    }),
     computed: {
         getLikeText() {
             return this.likes.find(item => item._id === this.currentUserId)
