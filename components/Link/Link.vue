@@ -3,7 +3,6 @@
     <button
         v-else
         class="Link js-focus-visible"
-        :class="className"
         type="button"
         @click="click"
     >{{text}}</button>
@@ -14,7 +13,6 @@ export default {
     props: {
         text: String,
         href: String,
-        className: String,
         click: {
             type: Function,
             default: () => {}
