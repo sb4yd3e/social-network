@@ -4,11 +4,19 @@
     width: 100%;
     margin: 10px 0;
 
+    @media (--xs-down) {
+        display: inline-block;
+    }
+
     &-Photo {
         width: 96px;
         height: 96px;
         margin: 0 20px 0 0;
         border-radius: var(--border-radius);
+
+        @media (--xs-down) {
+            margin: 0 0 20px;
+        }
     }
 
     &-Table {
