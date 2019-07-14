@@ -1,11 +1,5 @@
 <template>
-    <button
-        class="Button js-focus-visible"
-        :type="type || 'button'"
-        @click="click"
-    >
-        {{text}}
-    </button>
+    <button class="Button js-focus-visible" :type="type || 'button'" @click="click">{{text}}</button>
 </template>
 
 <script>

@@ -4,6 +4,8 @@ export default {
     state: {
         inited: false,
         posts: [],
+        postsCounter: 0,
+        allPostsCounter: 0,
         sortValue: 'date',
         sortDirection: -1,
         inputValue: ''
@@ -11,6 +13,8 @@ export default {
     mutations: {
         FETCH_MY_PAGE(state, payload) {
             state.posts = payload.posts;
+            state.postsCounter = payload.posts.length;
+            state.allPostsCounter = payload.allPostsCounter;
             state.inited = true;
         },
         CHANGE_MY_PAGE_SORT(state, payload) {
@@ -37,19 +41,45 @@ export default {
         CLEAR_MY_PAGE(state) {
             state.inited = false;
             state.posts = [];
+            state.postsCounter = 0;
+            state.allPostsCounter = 0;
         }
     },
     actions: {
-        fetchMyPage({ commit }, data) {
-            axios.post('/api/posts', data).then(response => {
-                return commit('FETCH_MY_PAGE', response.data.data);
-            });
+        fetchMyPage({ commit, state }, data) {
+            axios
+                .post('/api/posts', {
+                    showMore: true,
+                    ...data,
+                    postsCounter:
+                        state.postsCounter > 10 || state.postsCounter === 0
+                            ? state.postsCounter
+                            : 10
+                })
+                .then(response => {
+                    return commit('FETCH_MY_PAGE', response.data.data);
+                });
+        },
+        showMoreMyPage({ commit, state }, data) {
+            axios
+                .post('/api/posts', {
+                    showMore: true,
+                    ...data,
+                    postsCounter:
+                        state.postsCounter > 10 || state.postsCounter === 0
+                            ? state.postsCounter
+                            : 10
+                })
+                .then(response => {
+                    return commit('FETCH_MY_PAGE', response.data.data);
+                });
         },
         changeMyPageSort({ dispatch, rootState, commit }, data) {
             commit('CHANGE_MY_PAGE_SORT', data);
             return dispatch('fetchMyPage', {
                 _id: rootState.layout.user._id,
-                ...data
+                ...data,
+                showMore: false
             });
         },
         addMyPagePost({ dispatch, rootState, state, commit }, data) {
@@ -59,7 +89,8 @@ export default {
                     dispatch('fetchMyPage', {
                         _id: rootState.layout.user._id,
                         sortValue,
-                        sortDirection
+                        sortDirection,
+                        showMore: false
                     }),
                     commit('CLEAR_INPUT')
                 ];
@@ -71,7 +102,8 @@ export default {
                 return dispatch('fetchMyPage', {
                     _id: rootState.layout.user._id,
                     sortValue,
-                    sortDirection
+                    sortDirection,
+                    showMore: false
                 });
             });
         },

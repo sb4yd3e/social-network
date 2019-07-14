@@ -2,7 +2,7 @@
     <article class="Post">
         <nuxt-link class="Post-Header" :to="link">
             <div class="Post-PhotoWrapper">
-                <img class="Post-Photo" :src="creator.photo" alt="Фото автора поста">
+                <img class="Post-Photo" :src="creator.photo" alt="Фото автора поста" />
             </div>
             <div class="Post-Info">
                 <h3 class="Post-Name h5">{{creator.fullName}}</h3>
@@ -15,24 +15,31 @@
         <footer class="Post-Footer">
             <div class="Post-FooterItem">
                 <div @mouseenter="dropdownVisible = true" @mouseleave="dropdownVisible = false">
-                    <Link
-                        :text="getLikeText"
-                        :click="() => {like(_id, currentUserId)}"
-                    />
+                    <Link :text="getLikeText" :click="() => {like(_id, currentUserId)}" />
                     <div class="Post-Dropdown" v-if="dropdownVisible && !!this.likes.length">
                         <div class="Post-DropdownInner">
                             <ul class="Post-DropdownList">
-                                <li class="Post-DropdownItem" v-for="likeItem in this.likes.filter((item, i) => i < 4)" :key="likeItem._id">
-                                    <img
-                                        class="Post-DropdownImg"
-                                        :src="likeItem.photo"
-                                        :title="likeItem.fullName"
-                                        :alt="likeItem.fullName"
-                                    />
+                                <li
+                                    class="Post-DropdownItem"
+                                    v-for="likeItem in this.likes.filter((item, i) => i < 4)"
+                                    :key="likeItem._id"
+                                >
+                                    <nuxt-link
+                                        class="Link"
+                                        :to="$store.state.layout.user._id === likeItem._id ? '/' : `/users/${likeItem._id}`"
+                                    >
+                                        <img
+                                            class="Post-DropdownImg"
+                                            :src="likeItem.photo"
+                                            :title="likeItem.fullName"
+                                            :alt="likeItem.fullName"
+                                        />
+                                    </nuxt-link>
                                 </li>
-                                <li class="Post-DropdownItem" v-if="this.likes.length > 4">
-                                    +{{this.likes.length - 4}}
-                                </li>
+                                <li
+                                    class="Post-DropdownItem"
+                                    v-if="this.likes.length > 4"
+                                >+{{this.likes.length - 4}}</li>
                             </ul>
                         </div>
                     </div>

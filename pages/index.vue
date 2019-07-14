@@ -1,6 +1,6 @@
 <template>
     <div v-if="$store.state.myPage.inited">
-        <Profile v-bind="$store.state.layout.user" :canChange="true"/>
+        <Profile v-bind="$store.state.layout.user" :canChange="true" />
         <Miniform
             :value="$store.state.myPage.inputValue"
             :change="(value) => { $store.commit('CHANGE_INPUT_VALUE', value) }"
@@ -13,18 +13,25 @@
             :sortDirection="$store.state.myPage.sortDirection"
             :sort="changeSort"
         />
-        <ul v-if="!!$store.state.myPage.posts.length">
-            <li v-for="post in $store.state.myPage.posts" :key="post._id">
-                <Post
-                    v-bind="post"
-                    :currentUserId="$store.state.layout.user._id"
-                    :link="$store.state.layout.user._id === post.creator._id ? '/' : `/users/${post.creator._id}`"
-                    :remove="removePost"
-                    :like="likePost"
-                />
-            </li>
-        </ul>
-        <Empty v-else :text="'Нет ни одной добавленной записи'"/>
+        <div v-if="!!$store.state.myPage.posts.length">
+            <ul>
+                <li v-for="post in $store.state.myPage.posts" :key="post._id">
+                    <Post
+                        v-bind="post"
+                        :currentUserId="$store.state.layout.user._id"
+                        :link="$store.state.layout.user._id === post.creator._id ? '/' : `/users/${post.creator._id}`"
+                        :remove="removePost"
+                        :like="likePost"
+                    />
+                </li>
+            </ul>
+            <ShowMore
+                v-if="$store.state.myPage.postsCounter < $store.state.myPage.allPostsCounter"
+                :text="'Показать еще'"
+                :click="showMore"
+            />
+        </div>
+        <Empty v-else :text="'Нет ни одной добавленной записи'" />
     </div>
 </template>
 
@@ -33,6 +40,7 @@ import Profile from '../components/Profile/Profile.vue';
 import Miniform from '../components/Miniform/Miniform.vue';
 import Sort from '../components/Sort/Sort.vue';
 import Post from '../components/Post/Post.vue';
+import ShowMore from '../components/ShowMore/ShowMore.vue';
 import Empty from '../components/Empty/Empty.vue';
 
 export default {
@@ -46,6 +54,7 @@ export default {
         Miniform,
         Sort,
         Post,
+        ShowMore,
         Empty
     },
     mounted() {
@@ -60,6 +69,14 @@ export default {
         this.$store.dispatch('clearMyPage');
     },
     methods: {
+        showMore() {
+            const { sortValue, sortDirection } = this.$store.state.myPage;
+            this.$store.dispatch('showMoreMyPage', {
+                _id: this.$store.state.layout.user._id,
+                sortValue,
+                sortDirection
+            });
+        },
         addPost(e) {
             e.preventDefault();
 
