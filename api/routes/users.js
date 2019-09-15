@@ -3,7 +3,7 @@ const router = Router();
 const User = require('../models/user');
 
 router.post('/users', (req, res) => {
-    User.find({ fullName: { $regex: req.body.string, $options: 'i' } }).exec(
+    User.find({ fullName: { $regex: req.body.string, $options: 'i' } }).limit(10).exec(
         (findError, findResult) => {
             if (findError) {
                 res.json({
