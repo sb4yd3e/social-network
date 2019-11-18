@@ -1,6 +1,6 @@
 # СОЦИАЛЬНАЯ СЕТЬ
 
-> vue.js, nuxt.js, postcss, node.js, express, mongoDB
+> vue + nuxt + postcss + express + mongoDB
 
 ## Build Setup
 
